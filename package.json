@@ -1,18 +1,22 @@
 {
-  "name": "octo",
+  "name": "kraken.next",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "test",
+    "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape test/*.js"
   },
-  "author": "",
-  "license": "BSD-2-Clause",
+  "author": "Erik Toth <totherik@gmail.com>",
+  "license": "Apache2",
   "devDependencies": {
-    "express": "~3.4.8"
+    "express": "~3.4.8",
+    "tape": "~2.3.2",
+    "istanbul": "~0.2.3",
+    "jshint": "~2.4.1"
   },
   "dependencies": {
     "caller": "0.0.1",
