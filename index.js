@@ -38,6 +38,6 @@ module.exports = function (options) {
             startup.done(next);
         });
     });
-    
+
     return app;
 };
