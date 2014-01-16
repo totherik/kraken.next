@@ -1,0 +1,26 @@
+{
+  "name": "octo",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "express": "~3.4.8"
+  },
+  "dependencies": {
+    "caller": "0.0.1",
+    "meddleware": "git://github.com/paypal/meddleware.git",
+    "shortstop": "0.0.1",
+    "endgame": "0.0.3",
+    "q": "~1.0.0",
+    "debuglog": "0.0.2",
+    "nconf": "~0.6.9"
+  }
+}
