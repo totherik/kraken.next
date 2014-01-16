@@ -6,6 +6,11 @@ var path = require('path'),
     bootstrap = require('./lib/bootstrap');
 
 
+function noop(obj, cb) {
+    cb(null, obj);
+}
+
+
 module.exports = function (options) {
     var app;
 
@@ -14,6 +19,8 @@ module.exports = function (options) {
     }
 
     options = options || {};
+    options.onconfig = options.onconfig || noop;
+    options.protocols = options.protocols || {};
     options.basedir = options.basedir || path.dirname(caller());
 
     app = express();
@@ -31,5 +38,6 @@ module.exports = function (options) {
             startup.done(next);
         });
     });
+    
     return app;
 };
