@@ -25,6 +25,9 @@
     "endgame": "0.0.3",
     "q": "~1.0.0",
     "debuglog": "0.0.2",
-    "nconf": "~0.6.9"
+    "nconf": "~0.6.9",
+    "shush": "0.0.1",
+    "lusca": "~0.1.1",
+    "express-enrouten": "~0.1.0"
   }
 }

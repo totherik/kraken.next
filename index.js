@@ -3,8 +3,14 @@
 var path = require('path'),
     caller = require('caller'),
     express = require('express'),
-    bootstrap = require('./lib/bootstrap');
+    bootstrap = require('./lib/bootstrap'),
+    debug = require('debuglog')('kraken');
 
+
+var CONFIG_FILES, slice;
+
+CONFIG_FILES = ['app', 'middleware'];
+slice = Function.prototype.call.bind(Array.prototype.slice);
 
 function noop(obj, cb) {
     cb(null, obj);
@@ -19,9 +25,12 @@ module.exports = function (options) {
     }
 
     options = options || {};
-    options.onconfig = options.onconfig || noop;
     options.protocols = options.protocols || {};
-    options.basedir = options.basedir || path.dirname(caller());
+    options.onconfig  = options.onconfig || noop;
+    options.files     = Array.isArray(options.files) ? slice(options.files).concat(CONFIG_FILES) : CONFIG_FILES;
+    options.basedir   = options.basedir || path.dirname(caller());
+
+    debug('starting kraken with:', '\n', options);
 
     app = express();
     app.once('mount', function (parent) {
