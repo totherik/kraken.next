@@ -2,8 +2,7 @@
 'use strict';
 
 var express = require('express'),
-    kraken = require('../');
-
+    kraken = require('kraken');
 
 var app = express();
 app.use(kraken());
