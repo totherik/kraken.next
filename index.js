@@ -29,7 +29,7 @@ module.exports = function (options) {
 
     app = express();
     app.once('mount', function (parent) {
-        var deferred, startup;
+        var deferred;
 
         // Remove sacrificial express app
         parent.stack.pop();
@@ -38,8 +38,10 @@ module.exports = function (options) {
         // server is ready. This way we don't have to block standard
         // `listen` behavior, but failures will occur immediately.
         deferred = Q.defer();
-        startup = bootstrap(parent, options);
-        startup.done(deferred.resolve.bind(deferred));
+        bootstrap(parent, options)
+            .then(deferred.resolve.bind(deferred))
+            .catch(parent.emit.bind(parent, 'error'))
+            .done();
 
         parent.use(function (req, res, next) {
             if (deferred.promise.isFulfilled()) {
