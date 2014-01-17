@@ -1,0 +1,25 @@
+{
+    "view engines": {
+
+        "dust": {
+            "module": "consolidate",
+            "name": "dust"
+        },
+
+        "html": {
+            "module": "ejs",
+            "name": "ejs",
+            "renderer": "renderFile"
+        },
+
+        "ejs": {
+            "module": "consolidate",
+            "name": "ejs"
+        }
+
+    },
+
+    "express": {
+        "view engine": "html"
+    }
+}

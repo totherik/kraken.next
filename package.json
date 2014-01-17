@@ -19,7 +19,10 @@
     "tape": "~2.3.2",
     "istanbul": "~0.2.3",
     "jshint": "~2.4.1",
-    "supertest": "~0.8.3"
+    "supertest": "~0.8.3",
+    "consolidate": "~0.10.0",
+    "ejs": "~0.8.5",
+    "jade": "~1.1.4"
   },
   "dependencies": {
     "caller": "0.0.1",
@@ -31,6 +34,6 @@
     "nconf": "~0.6.9",
     "shush": "0.0.1",
     "lusca": "~0.1.1",
-    "express-enrouten": "~0.1.0"
+    "express-enrouten": "git://github.com/paypal/express-enrouten.git"
   }
 }

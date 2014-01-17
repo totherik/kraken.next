@@ -2,6 +2,7 @@
 
 var test = require('tape'),
     kraken = require('../'),
+    nconf = require('nconf'),
     express = require('express'),
     request = require('supertest');
 
@@ -9,10 +10,16 @@ var test = require('tape'),
 
 test('kraken', function (t) {
 
+    function reset() {
+        nconf.stores  = {};
+        nconf.sources = [];
+    }
+
     t.test('startup without options', function (t) {
         var app;
 
         t.plan(1);
+        t.on('end', reset);
 
         function start() {
             t.pass('server started');
@@ -33,6 +40,7 @@ test('kraken', function (t) {
         var app;
 
         t.plan(1);
+        t.on('end', reset);
 
         function start() {
             t.pass('server started');
@@ -53,6 +61,7 @@ test('kraken', function (t) {
         var app;
 
         t.plan(1);
+        t.on('end', reset);
 
         function start() {
             t.pass('server started');
@@ -71,6 +80,9 @@ test('kraken', function (t) {
 
     t.test('startup delay', function (t) {
         var options, app;
+
+        t.plan(1);
+        t.on('end', reset);
 
         function start() {
             t.pass('server started');
@@ -99,6 +111,7 @@ test('kraken', function (t) {
         var options, app, server;
 
         t.plan(3);
+        t.on('end', reset);
 
         function start() {
             t.pass('server started');
@@ -132,8 +145,10 @@ test('kraken', function (t) {
 
 
     t.test('startup error', function (t) {
-
         var options, app;
+
+        t.plan(1);
+        t.on('end', reset);
 
         function start() {
             t.fail('server started');
@@ -156,6 +171,36 @@ test('kraken', function (t) {
         app.on('start', start);
         app.on('error', error);
         app.use(kraken(options));
+    });
+
+
+    t.test('shutdown', function (t) {
+        var exit, expected, app, server;
+
+        t.plan(2);
+        t.on('end', reset);
+
+        exit = process.exit;
+        expected = 0;
+
+        process.exit = function (code) {
+            t.equals(code, expected);
+            expected += 1;
+
+            if (expected === 2) {
+                process.exit = exit;
+                t.end();
+            }
+        };
+
+        app = express();
+        app.use(kraken());
+        app.on('start', function () {
+            app.emit('shutdown', server, 1000);
+        });
+
+        server = app.listen(8000);
+        server.timeout = 0;
     });
 
 });
