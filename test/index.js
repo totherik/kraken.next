@@ -1,8 +1,15 @@
 'use strict';
 
-var express = require('express'),
-    kraken = require('../');
+var test = require('tape'),
+    kraken = require('../'),
+    express = require('express');
 
-var app = express();
-app.use(kraken());
-app.listen(8000);
+
+
+test('kraken', function (t) {
+
+    t.test('startup', function (t) {
+        t.end();
+    });
+
+});
