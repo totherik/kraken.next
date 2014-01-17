@@ -48,11 +48,10 @@ module.exports = function (options) {
         startup.done(deferred.resolve.bind(deferred));
 
         parent.use(function (req, res, next) {
-            if (!deferred.promise.isFulfilled()) {
-                res.send(503, 'Server is starting.');
-                return;
+            if (deferred.promise.isFulfilled()) {
+                return next();
             }
-            next();
+            res.send(503, 'Server is starting.');
         });
     });
 
