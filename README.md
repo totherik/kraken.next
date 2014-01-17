@@ -23,7 +23,13 @@ All kraken-js configuration settings are optional.
 #### Features
 
 ##### Environment-aware Configuration
-TODO
+Using environment suffixes, configuration files are applied and overridden according to the current environment as set
+by `NODE_ENV`. The application looks for a "config" directory relative to the basedir and recursively scans for all JSON
+files contained therein. JSON files without a suffix or with an environment suffix that matches the current env are
+processed an loaded. Additionally, JSON configuration files may contain comments.
+
+Valid `NODE_ENV` values are `undefined` or "dev[elopment]", "test[ing]", "stag[e|ing]", "prod[uction]". Simply
+add the suffix for a file to have it read only in that environment, e.g. "config/app-development.json".
 
 
 ##### Dynamic Configuration Values
