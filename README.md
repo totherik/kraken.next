@@ -26,6 +26,14 @@ All kraken-js configuration settings are optional.
 TODO
 
 
+##### Dynamic Configuration Values
+Powered by [shortstop](https://github.com/paypal/shortstop), configuration files can contain values that are resolved at runtime.
+Default shortstop protocol handlers include:
+- `path:{path}` - resolves the provided value to the application `basedir`.
+- `file:{path}` - loads the contents of the specified file.
+- `base64:{data}` - converts the base64-encoded value to a buffer.
+
+
 ##### Configuration-based Middleware
 Middleware is completely configuration-based. [meddleware](https://github.com/paypal/meddleware) is used internally to read,
 resolve, and register middleware with your express application.
