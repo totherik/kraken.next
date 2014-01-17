@@ -1,6 +1,7 @@
 'use strict';
 
-var path = require('path'),
+var Q = require('q'),
+    path = require('path'),
     caller = require('caller'),
     express = require('express'),
     bootstrap = require('./lib/bootstrap'),
@@ -34,17 +35,24 @@ module.exports = function (options) {
 
     app = express();
     app.once('mount', function (parent) {
-        var startup;
+        var deferred, startup;
 
         // Remove sacrificial express app
         parent.stack.pop();
 
-        // Kick off server and add middleware which will block
-        // until server is ready. This way we don't have to block
-        // standard `listen` behavior.
+        // Kick off server and add middleware which will block until
+        // server is ready. This way we don't have to block standard
+        // `listen` behavior, but failures will occur immediately.
+        deferred = Q.defer();
         startup = bootstrap(parent, options);
+        startup.done(deferred.resolve.bind(deferred));
+
         parent.use(function (req, res, next) {
-            startup.done(next);
+            if (!deferred.promise.isFulfilled()) {
+                res.send(503, 'Server is starting.');
+                return;
+            }
+            next();
         });
     });
 
