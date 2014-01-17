@@ -51,3 +51,22 @@ TODO
 
 ##### Configuration-based `express` Settings (including view engines)
 TODO
+
+
+#### Events
+kraken-js adds support for the following events to your express app instance:
+- `start` - the application has started and is ready to accept requests.
+- `shutdown` - the application is shutting down, no longer accepting requests.
+- `stop` - the http server is no longer connected or the shutdown timeout has expired.
+- `error` -
+
+
+#### Tests
+```bash
+$ npm test
+```
+
+#### Coverage
+````bash
+$ npm run-script cover && open coverage/lcov-report/index.html
+```

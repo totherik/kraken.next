@@ -29,13 +29,14 @@ module.exports = function (options) {
 
     app = express();
     app.once('mount', function (parent) {
-        var deferred, complete, error;
+        var deferred, complete, start, error;
 
         // Remove sacrificial express app
         parent.stack.pop();
 
         deferred = Q.defer();
         complete = deferred.resolve.bind(deferred);
+        start = parent.emit.bind(parent, 'start');
         error = parent.emit.bind(parent, 'error');
 
         // Kick off server and add middleware which will block until
@@ -43,6 +44,7 @@ module.exports = function (options) {
         // `listen` behavior, but failures will occur immediately.
         bootstrap(parent, options)
             .then(complete)
+            .then(start)
             .catch(error)
             .done();
 
