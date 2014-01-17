@@ -29,7 +29,7 @@ TODO
 ##### Dynamic Configuration Values
 Powered by [shortstop](https://github.com/paypal/shortstop), configuration files can contain values that are resolved at runtime.
 Default shortstop protocol handlers include:
-- `path:{path}` - resolves the provided value to the application `basedir`.
+- `path:{path}` - resolves the provided value against the application `basedir`.
 - `file:{path}` - loads the contents of the specified file.
 - `base64:{data}` - converts the base64-encoded value to a buffer.
 
