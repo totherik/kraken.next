@@ -11,8 +11,8 @@ app.listen(8000);
 ```
 
 ##### API
-**kraken([basedir|options])** - The kraken factory method argument is optional and can be either the base directory to use
-(String) or an options object.
+######kraken([basedir|options])
+The kraken factory method argument is optional and can be either the base directory to use (String) or an options object.
 
 ```javascript
 kraken(path.join(__dirname, 'app'));
