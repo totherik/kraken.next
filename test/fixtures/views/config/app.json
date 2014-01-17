@@ -1,11 +1,6 @@
 {
     "view engines": {
 
-        "dust": {
-            "module": "consolidate",
-            "name": "dust"
-        },
-
         "html": {
             "module": "ejs",
             "name": "ejs",
@@ -15,6 +10,11 @@
         "ejs": {
             "module": "consolidate",
             "name": "ejs"
+        },
+
+        "dust": {
+            "module": "path:./lib/renderer",
+            "name": "dust"
         }
 
     },

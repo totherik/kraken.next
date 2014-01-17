@@ -177,14 +177,14 @@ test('kraken', function (t) {
     t.test('shutdown', function (t) {
         var exit, expected, app, server;
 
-        t.plan(2);
+        t.plan(4);
         t.on('end', reset);
 
         exit = process.exit;
         expected = 0;
 
         process.exit = function (code) {
-            t.equals(code, expected);
+            t.equals(code, expected, 'correct exit code');
             expected += 1;
 
             if (expected === 2) {
@@ -197,6 +197,12 @@ test('kraken', function (t) {
         app.use(kraken());
         app.on('start', function () {
             app.emit('shutdown', server, 1000);
+        });
+
+        app.on('stop', function () {
+            // Will fire twice because we never
+            // really exit the process
+            t.ok(1, 'server stopped');
         });
 
         server = app.listen(8000);
