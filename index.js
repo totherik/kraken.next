@@ -25,7 +25,7 @@ module.exports = function (options) {
     options.onconfig  = options.onconfig || noop;
     options.basedir   = options.basedir || path.dirname(caller());
 
-    debug('starting kraken with:', '\n', options);
+    debug('kraken options\n', options);
 
     app = express();
     app.once('mount', function (parent) {
