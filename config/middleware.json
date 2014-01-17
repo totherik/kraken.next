@@ -34,7 +34,7 @@
             "enabled": true,
             "priority": 40,
             "module": "express",
-            "arguments": [ "path:./.build" ]
+            "arguments": [ "path:./static" ]
         },
 
         "logger": {
