@@ -8,13 +8,22 @@
         },
 
         "ejs": {
-            "module": "consolidate",
-            "name": "ejs"
+            "module": "consolidate"
         },
 
         "dust": {
             "module": "path:./lib/renderer",
             "name": "dust"
+        },
+
+        "htmlx": {
+            "module": "path:./lib/renderer",
+            "name": "dust",
+            "rendererFactory": "dustFactory"
+        },
+
+        "dustx": {
+            "module": "path:./lib/renderer"
         }
 
     },

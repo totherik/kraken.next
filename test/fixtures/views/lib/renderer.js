@@ -5,7 +5,7 @@ var fs = require('fs'),
     dustjs = require('dustjs-linkedin');
 
 
-exports.dust = function renderer(file, options, fn) {
+function renderer(file, options, fn) {
     var name;
 
     dustjs.onLoad = function (name, cb) {
@@ -15,4 +15,12 @@ exports.dust = function renderer(file, options, fn) {
     name = path.basename(file);
     name = name.replace(options.settings.views, '');
     dustjs.render(name, options, fn);
+}
+
+renderer.dustFactory = function factory() {
+    return renderer;
 };
+
+renderer.dust = renderer;
+
+module.exports = renderer;

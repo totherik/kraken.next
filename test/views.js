@@ -125,4 +125,62 @@ test('views', function (t) {
 
     });
 
+
+    t.test('configured renderer factory function', function (t) {
+        var options, app;
+
+        t.on('end', reset);
+
+        options = {
+            basedir: path.join(__dirname, 'fixtures', 'views'),
+            onconfig: function (settings, cb) {
+                settings.set('express:view engine', 'htmlx');
+                cb(null, settings);
+            }
+        };
+
+        app = express();
+        app.use(kraken(options));
+        app.on('start', function () {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        });
+
+    });
+
+
+    t.test('configured renderer exported function', function (t) {
+        var options, app;
+
+        t.on('end', reset);
+
+        options = {
+            basedir: path.join(__dirname, 'fixtures', 'views'),
+            onconfig: function (settings, cb) {
+                settings.set('express:view engine', 'dustx');
+                cb(null, settings);
+            }
+        };
+
+        app = express();
+        app.use(kraken(options));
+        app.on('start', function () {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        });
+
+    });
+
 });
