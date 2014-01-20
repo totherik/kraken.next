@@ -1,12 +1,6 @@
 {
     "view engines": {
 
-        "html": {
-            "module": "ejs",
-            "name": "ejs",
-            "renderer": "renderFile"
-        },
-
         "ejs": {
             "module": "consolidate"
         },
@@ -16,14 +10,25 @@
             "name": "dust"
         },
 
+        "dustx": {
+            "module": "path:./lib/renderer"
+        },
+
+        "html": {
+            "module": "ejs",
+            "name": "ejs",
+            "renderer": "renderFile"
+        },
+
         "htmlx": {
             "module": "path:./lib/renderer",
             "name": "dust",
             "rendererFactory": "dustFactory"
         },
 
-        "dustx": {
-            "module": "path:./lib/renderer"
+        "jade": {
+            "module": "jade",
+            "renderer": "renderFile"
         }
 
     },
