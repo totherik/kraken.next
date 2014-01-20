@@ -13,11 +13,6 @@ test('middleware', function (t) {
         nconf.sources = [];
     }
 
-    t.test('middleware', function (t) {
-        t.end();
-    });
-
-
     t.test('no config', function (t) {
         var basedir, app;
 
