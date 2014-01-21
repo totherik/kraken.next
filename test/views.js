@@ -21,11 +21,7 @@ test('views', function (t) {
 
         t.on('end', reset);
 
-        basedir = path.join(__dirname, 'fixtures', 'views');
-
-        app = express();
-        app.use(kraken(basedir));
-        app.on('start', function () {
+        function start() {
             var server;
 
             function done(err) {
@@ -34,7 +30,14 @@ test('views', function (t) {
             }
 
             server = request(app).get('/').expect(200, 'Hello, world!', done);
-        });
+        }
+
+        basedir = path.join(__dirname, 'fixtures', 'views');
+
+        app = express();
+        app.use(kraken(basedir));
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
 
     });
 
@@ -43,6 +46,17 @@ test('views', function (t) {
         var options, app;
 
         t.on('end', reset);
+
+        function start() {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        }
 
         options = {
             basedir: path.join(__dirname, 'fixtures', 'views'),
@@ -54,16 +68,8 @@ test('views', function (t) {
 
         app = express();
         app.use(kraken(options));
-        app.on('start', function () {
-            var server;
-
-            function done(err) {
-                t.error(err);
-                server.app.close(t.end.bind(t));
-            }
-
-            server = request(app).get('/').expect(200, 'Hello, world!', done);
-        });
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
 
     });
 
@@ -72,6 +78,17 @@ test('views', function (t) {
         var options, app;
 
         t.on('end', reset);
+
+        function start() {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        }
 
         options = {
             basedir: path.join(__dirname, 'fixtures', 'views'),
@@ -83,16 +100,8 @@ test('views', function (t) {
 
         app = express();
         app.use(kraken(options));
-        app.on('start', function () {
-            var server;
-
-            function done(err) {
-                t.error(err);
-                server.app.close(t.end.bind(t));
-            }
-
-            server = request(app).get('/').expect(200, 'Hello, world!', done);
-        });
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
 
     });
 
@@ -101,6 +110,17 @@ test('views', function (t) {
         var options, app;
 
         t.on('end', reset);
+
+        function start() {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        }
 
         options = {
             basedir: path.join(__dirname, 'fixtures', 'views'),
@@ -112,16 +132,8 @@ test('views', function (t) {
 
         app = express();
         app.use(kraken(options));
-        app.on('start', function () {
-            var server;
-
-            function done(err) {
-                t.error(err);
-                server.app.close(t.end.bind(t));
-            }
-
-            server = request(app).get('/').expect(200, 'Hello, world!', done);
-        });
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
 
     });
 
@@ -130,6 +142,17 @@ test('views', function (t) {
         var options, app;
 
         t.on('end', reset);
+
+        function start() {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        }
 
         options = {
             basedir: path.join(__dirname, 'fixtures', 'views'),
@@ -141,16 +164,8 @@ test('views', function (t) {
 
         app = express();
         app.use(kraken(options));
-        app.on('start', function () {
-            var server;
-
-            function done(err) {
-                t.error(err);
-                server.app.close(t.end.bind(t));
-            }
-
-            server = request(app).get('/').expect(200, 'Hello, world!', done);
-        });
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
 
     });
 
@@ -159,6 +174,17 @@ test('views', function (t) {
         var options, app;
 
         t.on('end', reset);
+
+        function start() {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        }
 
         options = {
             basedir: path.join(__dirname, 'fixtures', 'views'),
@@ -170,7 +196,17 @@ test('views', function (t) {
 
         app = express();
         app.use(kraken(options));
-        app.on('start', function () {
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
+    });
+
+
+    t.test('custom view implementation', function (t) {
+        var options, app;
+
+        t.on('end', reset);
+
+        function start() {
             var server;
 
             function done(err) {
@@ -179,8 +215,20 @@ test('views', function (t) {
             }
 
             server = request(app).get('/').expect(200, 'Hello, world!', done);
-        });
+        }
 
+        options = {
+            basedir: path.join(__dirname, 'fixtures', 'views'),
+            onconfig: function (settings, cb) {
+                settings.set('express:view engine', 'custom');
+                cb(null, settings);
+            }
+        };
+
+        app = express();
+        app.use(kraken(options));
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
     });
 
 });

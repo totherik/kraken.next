@@ -35,6 +35,7 @@
     "nconf": "~0.6.9",
     "shush": "0.0.1",
     "lusca": "~0.1.1",
-    "express-enrouten": "git://github.com/paypal/express-enrouten.git"
+    "express-enrouten": "git://github.com/paypal/express-enrouten.git",
+    "core-util-is": "~1.0.1"
   }
 }

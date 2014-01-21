@@ -23,12 +23,21 @@
         "htmlx": {
             "module": "path:./lib/renderer",
             "name": "dust",
-            "rendererFactory": "dustFactory"
+            "rendererFactory": {
+                "method": "dustFactory",
+                "arguments": []
+            }
         },
 
         "jade": {
             "module": "jade",
             "renderer": "renderFile"
+        },
+
+        "custom": {
+            "module": "path:./lib/renderer",
+            "name": "dust",
+            "viewConstructor": "path:./lib/View"
         }
 
     },
