@@ -13,6 +13,5 @@ View.prototype.lookup = function (path) {
 
 
 View.prototype.render = function (options, fn) {
-
     fn(null, 'Hello, world!');
 };
