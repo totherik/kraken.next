@@ -1,3 +1,16 @@
 {
-    "middleware": null
+    "middleware": {
+        /* Removed for development purposes only */
+        "shutdown": {
+            "module": "path:../../../lib/middleware/shutdown"
+        },
+
+        "multipart": {
+            "enabled": true,
+            "priority": 80,
+            "module": "path:../../../lib/middleware/multipart"
+        },
+
+        "appsec": null
+    }
 }

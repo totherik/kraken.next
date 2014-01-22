@@ -36,6 +36,8 @@
     "shush": "0.0.1",
     "lusca": "~0.1.1",
     "express-enrouten": "git://github.com/paypal/express-enrouten.git",
-    "core-util-is": "~1.0.1"
+    "core-util-is": "~1.0.1",
+    "formidable": "~1.0.14",
+    "readdirp": "~0.3.3"
   }
 }

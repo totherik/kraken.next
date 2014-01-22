@@ -27,14 +27,15 @@
         "favicon": {
             "enabled": true,
             "priority": 30,
-            "module": "express"
+            "module": "express",
+            "arguments": [ "path:./public/favicon.ico" ]
         },
 
         "static": {
             "enabled": true,
             "priority": 40,
             "module": "express",
-            "arguments": [ "path:./static" ]
+            "arguments": [ "path:./public" ]
         },
 
         "logger": {
