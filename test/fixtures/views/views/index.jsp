@@ -1,0 +1,1 @@
+<c:template xmlns:c="core" name="greeting" params="name">Hello, ${name}!</c:template>

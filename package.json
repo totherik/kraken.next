@@ -23,7 +23,8 @@
     "consolidate": "~0.10.0",
     "ejs": "~0.8.5",
     "jade": "~1.1.4",
-    "dustjs-linkedin": "~2.3.0"
+    "dustjs-linkedin": "~2.3.0",
+    "raptor": "~2.7.5-SNAPSHOT"
   },
   "dependencies": {
     "caller": "0.0.1",

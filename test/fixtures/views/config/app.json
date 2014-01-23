@@ -38,6 +38,11 @@
             "module": "path:./lib/renderer",
             "name": "dust",
             "viewConstructor": "path:./lib/View"
+        },
+
+        "jsp": {
+            "module": "path:../../../lib/templating",
+            "name": "raptor"
         }
 
     },
