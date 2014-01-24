@@ -41,5 +41,4 @@ exports.compiledRaptor = function compiledRaptor(filepath, options, fn) {
         });
 
     }
-
 };
