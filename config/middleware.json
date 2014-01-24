@@ -4,7 +4,7 @@
         "shutdown": {
             "enabled": true,
             "priority": 0,
-            "module": "kraken-js/lib/middleware/shutdown",
+            "module": "kraken-js/middleware/shutdown",
             "arguments": [{
                 "timeout": 30000,
                 "template": null
@@ -59,7 +59,7 @@
         "multipart": {
             "enabled": true,
             "priority": 80,
-            "module": "kraken-js/lib/middleware/multipart"
+            "module": "kraken-js/middleware/multipart"
         },
 
         "cookieParser": {

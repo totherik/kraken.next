@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "test",
-    "lib": "lib"
+    "example": "./example",
+    "lib": "./lib",
+    "test": "./test"
   },
   "scripts": {
     "test": "tape test/*.js",
     "cover": "istanbul cover tape -- test/*.js",
-    "lint": "jshint -c .jshintrc index.js lib/"
+    "lint": "jshint -c .jshintrc index.js lib/ middleware/"
   },
   "author": "Erik Toth <totherik@gmail.com>",
   "license": "Apache2",

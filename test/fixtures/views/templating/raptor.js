@@ -3,7 +3,7 @@
 var requires = {};
 
 
-exports.raptor = function (path, options, fn) {
+module.exports = function raptor(path, options, fn) {
     var engine;
 
     // TROLOL - raptor needs to "install" itself, so you need to require

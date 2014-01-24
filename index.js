@@ -28,7 +28,7 @@ module.exports = function (options) {
     debug('kraken options\n', options);
 
     app = express();
-    app.once('mount', function (parent) {
+    app.once('mount', function onmount(parent) {
         var deferred, complete, start, error;
 
         // Remove sacrificial express app

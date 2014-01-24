@@ -41,8 +41,7 @@
         },
 
         "jsp": {
-            "module": "path:../../../lib/templating",
-            "name": "raptor"
+            "module": "path:./templating/raptor"
         }
 
     },
