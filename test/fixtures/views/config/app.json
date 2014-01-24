@@ -41,7 +41,13 @@
         },
 
         "jsp": {
-            "module": "path:./templating/raptor"
+            "module": "path:./templating",
+            "name": "raptor"
+        },
+
+        "class": {
+            "module": "path:./templating",
+            "name": "compiledRaptor"
         }
 
     },

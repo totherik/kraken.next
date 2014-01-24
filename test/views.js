@@ -262,4 +262,35 @@ test('views', function (t) {
         app.on('error', t.error.bind(t));
     });
 
+
+    t.test('built-in shim with precompiled templates', function (t) {
+        var options, app;
+
+        t.on('end', reset);
+
+        function start() {
+            var server;
+
+            function done(err) {
+                t.error(err);
+                server.app.close(t.end.bind(t));
+            }
+
+            server = request(app).get('/').expect(200, 'Hello, world!', done);
+        }
+
+        options = {
+            basedir: path.join(__dirname, 'fixtures', 'views'),
+            onconfig: function (settings, cb) {
+                settings.set('express:view engine', 'class');
+                cb(null, settings);
+            }
+        };
+
+        app = express();
+        app.use(kraken(options));
+        app.on('start', start);
+        app.on('error', t.error.bind(t));
+    });
+
 });
