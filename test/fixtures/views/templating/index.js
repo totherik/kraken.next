@@ -19,7 +19,8 @@ exports.compiledRaptor = function compiledRaptor(filepath, options, fn) {
     var engine, name;
 
     engine = requires.raptor || (require('raptor') && (requires.raptor = require('raptor/templating')));
-    name = path.basename(filepath, path.extname(filepath));
+    name = path.relative(options.settings.views, filepath);
+    name = name.replace(path.extname(name), '');
 
     try {
 
