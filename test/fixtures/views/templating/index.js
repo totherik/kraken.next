@@ -28,15 +28,12 @@ exports.compiledRaptor = function compiledRaptor(filepath, options, fn) {
     } catch (err) {
 
         fs.readFile(filepath, 'utf8', function onfile(err, data) {
-            var compiler;
-
             if (err) {
                 fn(err);
                 return;
             }
 
-            compiler = requires.compiler || (requires.compiler = require('raptor/templating/compiler'));
-            compiler.createCompiler()._eval(data);
+            eval(data); // TROLOL - raptor global pollution
             fn(null, engine.renderToString(name, options));
         });
 
