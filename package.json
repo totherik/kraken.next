@@ -1,7 +1,16 @@
 {
   "name": "kraken.next",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "An express-based Node.js web application bootstrapping module.",
+  "keywords": [
+    "node.js",
+    "node",
+    "javascript",
+    "js",
+    "web",
+    "express",
+    "connect"
+  ],
   "main": "index.js",
   "directories": {
     "example": "./example",
@@ -13,10 +22,40 @@
     "cover": "istanbul cover tape -- test/*.js",
     "lint": "jshint -c .jshintrc index.js lib/ middleware/"
   },
-  "author": "Erik Toth <totherik@gmail.com>",
-  "license": "Apache2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paypal/kraken-js.git"
+  },
+  "author": "Erik Toth <ertoth@paypal.com>",
+  "contributors": [
+    {
+      "name": "Jeff Harrell",
+      "email": "jeharrell@paypal.com"
+    },
+    {
+      "name": "Trevor Livingston",
+      "email": "trlivingston@paypal.com"
+    },
+    {
+      "name": "Lenny Markus",
+      "email": "lmarkus@paypal.com"
+    },
+    {
+      "name": "Jean-Charles Sisk",
+      "email": "jsisk@paypal.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "engineStrict": true,
   "devDependencies": {
-    "express": "~3.4.8",
     "tape": "~2.3.2",
     "istanbul": "~0.2.3",
     "jshint": "~2.4.1",
@@ -25,7 +64,10 @@
     "ejs": "~0.8.5",
     "jade": "~1.1.4",
     "dustjs-linkedin": "~2.3.0",
-    "raptor": "~2.7.5-SNAPSHOT"
+    "raptor": "~2.7.4"
+  },
+  "peerDependencies": {
+    "express": "^3.4"
   },
   "dependencies": {
     "caller": "~0.0.1",
@@ -37,7 +79,7 @@
     "nconf": "~0.6.9",
     "shush": "~0.0.1",
     "lusca": "~0.1.1",
-    "express-enrouten": "git://github.com/paypal/express-enrouten.git",
+    "express-enrouten": "~0.2.0",
     "core-util-is": "~1.0.1",
     "formidable": "~1.0.14",
     "readdirp": "~0.3.3"

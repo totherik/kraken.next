@@ -6,21 +6,19 @@
 *.pid
 *.gz
 
+test
 pids
 logs
 results
 coverage
 lib-cov
 xunit.xml
-node_modules
-npm-debug.log
 
 .project
 .idea
 .settings
 .iml
 
-.DS_Store*
 ehthumbs.db
 Icon?
 Thumbs.db
